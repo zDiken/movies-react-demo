@@ -13,7 +13,7 @@ export const useMovies = (searchTerm, filters, page = 1) => {
             const typeFilter = '&type=movie';
 
             const response = await fetch(
-                `${process.env.REACT_APP_TMDB_API_URL}?apikey=${process.env.REACT_APP_TMDB_API_KEY}&s=${searchQuery}${yearFilter}${typeFilter}&page=${page}`
+                `${process.env.REACT_APP_TMDB_API_URL || process.env.REACT_APP_TMDB_API_TEST_URL}?apikey=${process.env.REACT_APP_TMDB_API_KEY}&s=${searchQuery}${yearFilter}${typeFilter}&page=${page}`
             );
 
             if (!response.ok) {
@@ -36,7 +36,7 @@ export const useMovieDetails = (imdbID) => {
     return useQuery({
         queryKey: ['movie', imdbID],
         queryFn: async () => {
-            const response = await fetch(`${process.env.REACT_APP_TMDB_API_URL}?apikey=${process.env.REACT_APP_TMDB_API_KEY}&i=${imdbID}&plot=full`);
+            const response = await fetch(`${process.env.REACT_APP_TMDB_API_URL || process.env.REACT_APP_TMDB_API_TEST_URL}?apikey=${process.env.REACT_APP_TMDB_API_KEY}&i=${imdbID}&plot=full`);
             if (!response.ok) {
                 throw new Error('Failed to fetch movie details');
             }
