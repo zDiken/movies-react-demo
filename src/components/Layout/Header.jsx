@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { uiSlice } from "../../Redux/Slices/uiSlice";
 import { Moon, Sun } from "lucide-react";
-
 export const Header = () => {
   const dispatch = useDispatch();
   const { currentView, isDarkMode } = useSelector(state => state.ui);
@@ -15,11 +14,12 @@ export const Header = () => {
   };
 
   return (
-    <header className={` sticky top-0 z-40 border-b ${isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'}`}>
+    <header className={` sticky top-0 z-40 border-b p-2 ${isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-8">
-            <h1 className="text-2xl font-bold">Doubledotts Movie</h1>
+            {/* <h1 className="text-2xl font-bold">Doubledotts Movie</h1> */}
+            <img src="/Doubledotts.png" alt="Doubledotts-logo" className="w-44" />
             <nav className="hidden md:flex space-x-8">
               <button
                 onClick={() => setView('home')}
